@@ -3,9 +3,9 @@
 
 ## TL:DR
 
-Host Name: http://ec2-18-217-235-171.us-east-2.compute.amazonaws.com/
+Host Name: http://ec2-52-33-24-77.us-west-2.compute.amazonaws.com/
 
-IP Address: 18.217.235.171
+IP Address: 52.33.24.77
 
 ## Amazon Lightsail Server Set Up
 
@@ -34,7 +34,7 @@ IP Address: 18.217.235.171
 
 N.B. From here take note of the use of first and second instances of terminals. The first terminal will be the server which will be same as a direct operation on the AWS terminal while the second terminal will be used to create the grader's account
 
-3. Open the first terminal and use this key to log into our Amazon Lightsail Server: `$ ssh -i ~/.ssh/YourAWSKey.pem ubuntu@13.58.109.116`
+3. Open the first terminal and use this key to log into our Amazon Lightsail Server: `$ ssh -i ~/.ssh/YourAWSKey.pem ubuntu@52.33.24.77`
 
 4. Log as root user`$ sudo su -`
 
@@ -69,13 +69,13 @@ N.B. From here take note of the use of first and second instances of terminals. 
 
 18. Type `exit` to disconnect from Amazon Lightsail server
 
-19. Log into the server as grader(that is log in via the second terminal window): `$ ssh -i ~/.ssh/udacity_key.rsa grader@13.58.109.116`
+19. Log into the server as grader(that is log in via the second terminal window): `$ ssh -i ~/.ssh/udacity_key.rsa grader@52.33.24.77`
 
 20. Enforce the key-based authentication: `$ sudo nano /etc/ssh/sshd_config`. Find the *PasswordAuthentication* line and change text to `no`. After this, restart ssh again: `$ sudo service ssh restart`
 
 21. Change the ssh port from 22 to 2200: `$ sudo nano /etc/ssh/ssdh_config` Find the *Port* line and change `22` to `2200`. Restart ssh: `$ sudo service ssh restart`
 
-22. Disconnect the server by `^c` and then log back through port 2200: `$ ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@13.58.109.116` now loggin in via port 2200
+22. Disconnect the server by `^c` and then log back through port 2200: `$ ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@52.33.24.77` now loggin in via port 2200
 
 23. Disable ssh login for *root* user to prevent attackers from making a fondering attept with root: `$ sudo nano /etc/ssh/sshd_config`. Find the *PermitRootLogin* line and edit to `no`. Restart ssh `$ sudo service ssh restart`
 
@@ -162,8 +162,8 @@ N.B `sites-available/: This is an apache2 directory that contains all of the vir
 - Paste the following code and save
 ```
 <VirtualHost *:80>
-    ServerName [YOUR PUBLIC IP ADDRESS] e.g 18.217.235.171
-    ServerAlias [YOUR AMAZON LIGHTSAIL HOST NAME] eg http://ec2-18-217-235-171.us-east-2.compute.amazonaws.com/
+    ServerName [YOUR PUBLIC IP ADDRESS] e.g 52.33.24.77
+    ServerAlias [YOUR AMAZON LIGHTSAIL HOST NAME] 
     ServerAdmin admin@[YOUR PUBLIC IP ADDRESS]
     WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
     WSGIProcessGroup catalog
